@@ -643,7 +643,12 @@ function readShareCode() {
 function shareCodesFormat() {
   return new Promise(async resolve => {
     // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
-    $.newShareCodes = [];
+    $.newShareCodes = [
+      'T012aGLWmKy_IuBRCjVWnYaS5kRrbA@T0169KUiHklFrEqUdXWpCjVWnYaS5kRrbA@T015_aUqHkvNfdICl4sCjVWnYaS5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWnYaS5kRrbA',
+      'T012aGLWmKy_IuBRCjVWnYaS5kRrbA@T0169KUiHklFrEqUdXWpCjVWnYaS5kRrbA@T015_aUqHkvNfdICl4sCjVWnYaS5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWnYaS5kRrbA',
+      'T012aGLWmKy_IuBRCjVWnYaS5kRrbA@T0169KUiHklFrEqUdXWpCjVWnYaS5kRrbA@T015_aUqHkvNfdICl4sCjVWnYaS5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWnYaS5kRrbA',
+      'T012aGLWmKy_IuBRCjVWnYaS5kRrbA@T0169KUiHklFrEqUdXWpCjVWnYaS5kRrbA@T015_aUqHkvNfdICl4sCjVWnYaS5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWnYaS5kRrbA',
+    ];
     if ($.shareCodesArr[$.index - 1]) {
       $.newShareCodes = $.shareCodesArr[$.index - 1].split('@');
     } else {
@@ -651,10 +656,10 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-    const readShareCodeRes = await readShareCode();
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
+    // const readShareCodeRes = await readShareCode();
+    // if (readShareCodeRes && readShareCodeRes.code === 200) {
+    //   $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
+    // }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
     resolve();
   })

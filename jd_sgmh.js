@@ -266,7 +266,13 @@ function requireConfig() {
   return new Promise(async resolve => {
     console.log(`开始获取${$.name}配置文件\n`);
     //Node.js用户请在jdCookie.js处填写京东ck;
-    let shareCodes = []
+    let shareCodes = [
+      'T0169KUiHklFrEqUdXWpCjVWmIaW5kRrbA@T012aGLWmKy_IuBRCjVWmIaW5kRrbA@T015_aUqHkvNfdICl4sCjVWmIaW5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWmIaW5kRrbA',
+      'T0169KUiHklFrEqUdXWpCjVWmIaW5kRrbA@T012aGLWmKy_IuBRCjVWmIaW5kRrbA@T015_aUqHkvNfdICl4sCjVWmIaW5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWmIaW5kRrbA',
+      'T0169KUiHklFrEqUdXWpCjVWmIaW5kRrbA@T012aGLWmKy_IuBRCjVWmIaW5kRrbA@T015_aUqHkvNfdICl4sCjVWmIaW5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWmIaW5kRrbA',
+      'T0169KUiHklFrEqUdXWpCjVWmIaW5kRrbA@T012aGLWmKy_IuBRCjVWmIaW5kRrbA@T015_aUqHkvNfdICl4sCjVWmIaW5kRrbA@T018aGTblYO5I9BV9rVWkwCjVWmIaW5kRrbA',
+
+    ]
     console.log(`共${cookiesArr.length}个京东账号\n`);
     if ($.isNode() && process.env.JDSGMH_SHARECODES) {
       if (process.env.JDSGMH_SHARECODES.indexOf('\n') > -1) {
@@ -302,9 +308,9 @@ function shareCodesFormat() {
     }
     const readShareCodeRes = await readShareCode();
     // console.log(readShareCodeRes)
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
+    // if (readShareCodeRes && readShareCodeRes.code === 200) {
+    //   $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
+    // }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
     resolve();
   })
